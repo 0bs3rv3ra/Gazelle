@@ -26,6 +26,7 @@ $Val->SetFields('styleurl', 0, "regex", "You did not enter a valid stylesheet UR
 //$Val->SetFields('torrentgrouping', 0, "number", "You forgot to select your torrent grouping option.");
 $Val->SetFields('discogview', 1, "number", "You forgot to select your discography view option.", array('minlength' => 0, 'maxlength' => 1));
 $Val->SetFields('postsperpage', 1, "number", "You forgot to select your posts per page option.", array('inarray' => array(25, 50, 100)));
+$Val->SetFields('privatemessagesperpage', 1, "number", "You forgot to select your private messages per page option.", array('inarray' => array(25, 50, 100)));
 //$Val->SetFields('hidecollage', 1, "number", "You forgot to select your collage option.", array('minlength' => 0, 'maxlength' => 1));
 $Val->SetFields('collagecovers', 1, "number", "You forgot to select your collage option.");
 $Val->SetFields('avatar', 0, "regex", "You did not enter a valid avatar URL.", array('regex' => "/^".IMAGE_REGEX."$/i"));
@@ -209,6 +210,7 @@ $Options['DisableGrouping2']    = (!empty($_POST['disablegrouping']) ? 0 : 1);
 $Options['TorrentGrouping']     = (!empty($_POST['torrentgrouping']) ? 1 : 0);
 $Options['DiscogView']          = (!empty($_POST['discogview']) ? 1 : 0);
 $Options['PostsPerPage']        = (int)$_POST['postsperpage'];
+$Options['PrivateMessagesPerPage']        = (int)$_POST['privatemessagesperpage'];
 //$Options['HideCollage']         = (!empty($_POST['hidecollage']) ? 1 : 0);
 $Options['CollageCovers']       = (empty($_POST['collagecovers']) ? 0 : $_POST['collagecovers']);
 $Options['ShowTorFilter']       = (empty($_POST['showtfilter']) ? 0 : 1);
