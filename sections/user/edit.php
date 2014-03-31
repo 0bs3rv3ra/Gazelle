@@ -381,6 +381,17 @@ echo $Val->GenerateJS('userform');
 					posts per page
 				</td>
 			</tr>
+			<tr id="comm_pmpp_tr">
+				<td class="label tooltip" title="This option allows you to set the desired number of displayed private messages per page in your inbox."><strong>Private messages per page (inbox)</strong></td>
+				<td>
+					<select name="privatemessagesperpage" id="privatemessagesperpage">
+						<option value="25"<?=$SiteOptions['PrivateMessagesPerPage'] == 25 ? ' selected="selected"' : ''?>>25 (default)</option>
+						<option value="50"<?=$SiteOptions['PrivateMessagesPerPage'] == 50 ? ' selected="selected"' : ''?>>50</option>
+						<option value="100"<?=$SiteOptions['PrivateMessagesPerPage'] == 100 ? ' selected="selected"' : ''?>>100</option>
+					</select>
+					private messages per page
+				</td>
+			</tr>
 			<tr id="comm_inbsort_tr">
 				<td class="label tooltip" title="This option will force unread private messages to be listed first."><strong>Inbox sorting</strong></td>
 				<td>

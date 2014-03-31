@@ -3,7 +3,10 @@
 
 
 $UserID = $LoggedUser['ID'];
-
+//deal with users who have yet to configure this in their profile page
+if(!isset($LoggedUser['PrivateMessagesPerPage'])) {
+	$LoggedUser['PrivateMessagesPerPage'] = 25; //problem solbed
+}
 
 if (empty($_GET['action'])) {
 	$Section = 'inbox';
@@ -14,7 +17,7 @@ if (!in_array($Section, array('inbox', 'sentbox'))) {
 	error(404);
 }
 
-list($Page, $Limit) = Format::page_limit(MESSAGES_PER_PAGE);
+list($Page, $Limit) = Format::page_limit($LoggedUser['PrivateMessagesPerPage']);
 
 View::show_header('Inbox');
 ?>
@@ -79,7 +82,7 @@ list($NumResults) = $DB->next_record();
 $DB->set_query_id($Results);
 $Count = $DB->record_count();
 
-$Pages = Format::get_pages($Page, $NumResults, MESSAGES_PER_PAGE, 9);
+$Pages = Format::get_pages($Page, $NumResults, $LoggedUser['PrivateMessagesPerPage'], 9);
 echo "\t\t$Pages\n";
 ?>
 	</div>
