@@ -58,9 +58,17 @@ class DonationsView {
 <?
 	}
 
-	public static function render_donor_stats($UserID) {
+	public static function render_donor_stats($UserID, $Preview, $Paranoia) {
 		$OwnProfile = G::$LoggedUser['ID'] == $UserID;
-		if (check_perms("users_mod") || $OwnProfile || Donations::is_visible($UserID)) {
+		$DonationsVisible = Donations::is_visible($UserID);
+		if ($Preview == 1) {
+			$OwnProfile = false;
+		}
+		//if previewing paranoia with donor_stats hidden, make sure (below) reflects that
+		if (in_array('donor_stats', $Paranoia)) {
+			$DonationsVisible = false;
+		}
+		if (check_perms("users_mod") || $OwnProfile || $DonationsVisible) {
 ?>
 			<div class="box box_info box_userinfo_donor_stats">
 				<div class="head colhead_dark">Donor Statistics</div>

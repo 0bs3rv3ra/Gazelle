@@ -561,7 +561,7 @@ if ($Override = check_perms('users_mod') || $OwnProfile || !empty($SupportFor)) 
 		</div>
 <?
 include(SERVER_ROOT.'/sections/user/community_stats.php');
-DonationsView::render_donor_stats($UserID);
+DonationsView::render_donor_stats($UserID, $Preview, $Paranoia);
 ?>
 	</div>
 	<div class="main_column">
